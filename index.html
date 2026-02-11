@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TWST Institute</title>
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <!-- Google Font and Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <style>
+    :root{
+      --bg:#f4f3f3;
+      --card:#ffffff;
+      --muted:#767676;
+      --accent:#d32f2f;
+      --primary:#222;
+      --gold:#f4c430;
+      --shadow: 0 6px 18px rgba(20,20,20,0.08);
+      --radius:8px;
+      --container:1100px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg, #fafafa 0%, var(--bg) 100%);
+      color:var(--primary);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      font-size:15px;
+    }
+
+    /* Header */
+    header{
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      position:sticky;
+      top:0;
+      z-index:40;
+    }
+    .topbar{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:12px 20px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--primary);
+    }
+    .logo .brand {
+      font-weight:700;
+      color:var(--accent);
+      letter-spacing:0.4px;
+    }
+    nav{ margin-left:auto; }
+    nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:18px; align-items:center; }
+    nav a{ text-decoration:none; color:#444; padding:8px 10px; border-radius:6px; font-weight:600; font-size:14px;}
+    nav a:hover{ background:#f8f8f8; }
+
+    /* Layout container */
+    .wrap{
+      max-width:var(--container);
+      margin:26px auto;
+      padding:0 20px;
+    }
+
+    /* Profile card */
+    .profile-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:visible;
+      padding-bottom:20px;
+    }
+
+.banner{
+  width:100%;
+  height:220px;          /* adjust as needed */
+  background:#25225c;       /* optional: fills empty space */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.banner-img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;    /* shows FULL image */
+  display:block;
+}
+
+
+
+    .avatar{
+      width:120px;
+      height:120px;
+      border-radius:12px;
+      border:6px solid var(--card);
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:-60px;
+      background: #fff url('images/avatar.jpg') center/cover no-repeat;
+      box-shadow:0 8px 20px rgba(10,10,10,0.12);
+    }
+
+    .profile-main{
+      padding:84px 24px 12px; /* leave room for avatar */
+    }
+
+    .profile-row{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .title-block{
+      max-width:74%;
+      min-width:260px;
+    }
+    h1.title{
+      margin:0 0 6px;
+      font-size:22px;
+      letter-spacing:0.2px;
+    }
+    .verified{
+      display:inline-block;
+      background:#ffecec;
+      color:#d14141;
+      padding:4px 8px;
+      border-radius:16px;
+      font-weight:600;
+      font-size:12px;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    .meta{
+      color:var(--muted);
+      font-size:14px;
+      margin-top:6px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .rating{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-top:8px;
+    }
+    .stars{ color:var(--gold); font-size:18px; }
+    .rating .score{ font-size:22px; font-weight:700; color:#222; }
+
+    .actions{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-top:6px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      border:0;
+      background:var(--primary);
+      color:#fff;
+      padding:8px 14px;
+      border-radius:8px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-size:14px;
+    }
+    .btn.secondary{ background:#fff; color: #222; border:1px solid #e5e5e5; box-shadow:none; }
+    .btn.ghost{ background:transparent; color:#555; border:1px solid #eee; }
+
+    /* Tabs */
+    .tabs{
+      margin-top:18px;
+      display:flex;
+      gap:8px;
+      border-top:1px solid #f0f0f0;
+      padding-top:14px;
+    }
+    .tab-btn{
+      background:#fff;
+      border:1px solid transparent;
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .tab-btn.active{ border-color:#eee; box-shadow:0 6px 12px rgba(0,0,0,0.04); background:#fff; }
+
+    .btn.whatsapp{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 16px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.btn.whatsapp i{
+  font-size:18px;
+}
+
+
+    /* Content columns */
+    .content{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:18px;
+      margin-top:18px;
+    }
+
+    /* Left column cards */
+    .card{
+      background:var(--card);
+      border-radius:8px;
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+    .card h3{ margin:0 0 10px; font-size:16px; }
+    .card p{ margin:0; color:var(--muted); font-size:14px; }
+
+    .services .pill{
+      display:inline-block;
+      background:#222a;
+      color:#111;
+      padding:6px 10px;
+      border-radius:6px;
+      font-weight:600;
+      margin-right:8px;
+      margin-bottom:8px;
+      color:#fff;
+      background:#222;
+      font-size:13px;
+    }
+
+    .photos-grid{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .photos-grid img{
+      width: calc((100% - 36px) / 4);
+      border-radius:6px;
+      height:86px;
+      object-fit:cover;
+      box-shadow:0 6px 16px rgba(10,10,10,0.06);
+    }
+
+    /* Right column social & reviews */
+    .social-icons a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      border-radius:8px;
+      text-decoration:none;
+      color:#fff;
+      margin-right:8px;
+      background:#3b5998; /* default (facebook) */
+    }
+    .social-icons a.ig{ background: linear-gradient(45deg,#F58529,#DD2A7B,#8134AF); }
+    .social-icons a.twitter{ background:#1DA1F2; }
+    .social-icons a.linkedin{ background:#0077b5; }
+    .social-icons a.youtube{ background:#FF0000; }
+
+    .review-score{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-top:6px;
+    }
+    .score-big{
+      font-size:42px;
+      font-weight:800;
+      color:#f2a500;
+    }
+    .score-meta{ color:var(--muted); }
+    .bar{
+      height:10px;
+      background:#f2f2f2;
+      border-radius:8px;
+      overflow:hidden;
+      flex:1;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width:88%;
+      background:linear-gradient(90deg,#ffbf00,#f2a500);
+    }
+
+    /* Footer */
+    footer{
+      margin-top:30px;
+      background:#060606;
+      color:#ddd;
+      padding:28px 20px;
+    }
+    .footer-inner{ max-width:var(--container); margin:0 auto; display:flex; gap:20px; align-items:flex-start; padding:0 20px; flex-wrap:wrap; }
+.footer-col{
+  max-width:320px;      /* optional: controls footer column width */
+}
+
+.footer-col iframe{
+  width:100%;
+  height:180px;         /* rectangular map */
+  border:0;
+  border-radius:12px;
+  display:block;
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Directions Button */
+.map-btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 14px;
+  background:#0c6ef6;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  border-radius:8px;
+  transition:0.3s ease;
+}
+
+.map-btn:hover{
+  background:#00254f;
+}
+
+    .footer-logo{ display:flex; align-items:center; gap:12px; color:#fff; font-weight:500; }
+    .footer-links a{ color:#ddd; display:block; text-decoration:none; margin:8px 0; font-size:14px; opacity:0.9; }
+    .footer-bottom{ max-width:var(--container); margin:18px auto 0; padding:0 20px; color:#aaa; font-size:13px; text-align:center; }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .content{ grid-template-columns: 1fr; }
+      .title-block{ max-width:100%; }
+      .photos-grid img{ width: calc((100% - 36px) / 3); }
+      .avatar{ left:24px; transform:translateX(0); }
+      .profile-main{ padding-left:24px; padding-right:24px; padding-top:92px; }
+    }
+    @media (max-width:560px){
+      .photos-grid img{ width: calc((100% - 24px) / 2); height:92px; }
+      nav ul{ display:none; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="topbar">
+      <a class="logo">
+      <img src="logo.jpg" alt="TWST Institute Logo" style="width:30px;height:30px;border-radius:6px;">
+      <div>
+          <div class="brand"></div>
+          <div style="font-size:12px;color:var(--muted)">TWST INSTITUTE</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#Programs">Programs</a></li>
+          <li><a href="#">Trainers</a></li>
+          <li><a href="#Contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+<section class="profile-card" aria-labelledby="profile-title">
+
+<div class="banner">
+  <img src="image/poster 1.jpeg" alt="Institute banner" class="banner-img">
+</div>
+
+
+      <div class="profile-main">
+        <div class="profile-row">
+          <div class="title-block">
+            <h1 id="profile-title" class="title">TWST INSTITUTE</h1>
+            <div class="meta">
+              <div><i class="fa fa-map-marker-alt" style="color:#d14141"></i> Location: No:63 Coramental Apartment, Velachery Road, East Tambaram, Adhi Nagar Bus Stop, Tamil Nadu - 600 059.  </div>
+            </div>
+
+            <div class="rating" aria-label="Rating">
+              <div class="stars" aria-hidden="true">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+              </div>
+              <div class="score">
+                <span style="font-weight:700;color:#111;margin-right:6px">4.9</span>
+                <span style="color:var(--muted);font-size:13px">Rating | 37 Reviews</span>
+              </div>
+            </div>
+
+            <div class="actions" role="group" aria-label="Contact actions">
+              <!-- Update links -->
+              <a class="btn" href="tel:+9193443 92931"><i class="fa fa-phone" ></i> Call Now</a>
+<a class="btn whatsapp"
+   href="https://wa.me/919344392931"
+   target="_blank"
+   rel="noopener">
+  <i class="fa fa-whatsapp"></i> WhatsApp
+</a>
+              <a class="btn secondary" href="#" onclick="alert('Write a review')"><i class="fa fa-pen"></i> Write a Review</a>
+              <a class="btn ghost" href="#" onclick="navigator.clipboard?.writeText(location.href).then(()=> alert('Link copied'))"><i class="fa fa-share-alt"></i> Share</a>
+              <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=12.9229544,80.1330327" target="_blank" rel="noopener"><i class="fa fa-directions"></i> Directions</a>
+            </div>
+          </div>
+
+
+        <!-- Tabs -->
+        <div class="tabs" role="tablist" aria-label="Profile sections">
+          <button class="tab-btn active" data-tab="about" role="tab" aria-selected="true">About</button>
+          <button class="tab-btn" data-tab="services" role="tab">Services</button>
+          <button class="tab-btn" data-tab="photos" role="tab">Photos</button>
+          <button class="tab-btn" data-tab="social" role="tab">Social Media</button>
+          <button class="tab-btn" data-tab="reviews" role="tab">Reviews</button>
+        </div>
+
+        <div class="content" style="margin-top:10px;">
+          <!-- LEFT column -->
+          <div>
+            <!-- About -->
+            <div class="card tab-content" id="about">
+              <h3>About</h3>
+              <p>TWST Institute was established on 19 January 2015 with the objective of providing skill-based vocational training in 
+                tailoring and dress making. The institute was founded to empower individuals—particularly women and young learners—with 
+                practical, employment-oriented skills that support self-employment and career development in the fashion industry. From 
+                its inception, TWST Institute has focused on hands-on training, personalized instruction, and industry-relevant curriculum 
+                rather than conventional academic education. Over the years, it has built a reputation for delivering structured practical 
+                programs that enable students to start their own tailoring units or pursue entrepreneurial opportunities in garment production 
+                and design services.</p>
+            </div>
+
+            <!-- Services -->
+            <div class="card tab-content" id="services" style="display:none; margin-top:16px;" itemid="Programs">
+              <h3>Services</h3>
+              <div class="services">
+                <span class="pill">BASIC TAILORING</span>
+                <span class="pill">ADVANCE TAILORING</span>
+                <span class="pill">DIPLOMA IN FASHION DESIGNING</span>
+                <span class="pill">MENS WEAR</span>
+                <span class="pill">EMBROIDERY</span>
+                <span class="pill">AARI 3 & 5D</span>
+                <span class="pill">BROOCH WORK</span>
+                <span class="pill">FABRIC PAINTING</span>
+                <span class="pill">TANJORE PAINTING</span>
+                <span class="pill">SAREE PRE FOLDING</span>
+                <span class="pill">Online Coaching</span>
+              </div>
+            </div>
+
+            <!-- Photos -->
+            <div class="card tab-content" id="photos" style="display:none; margin-top:16px;">
+              <h3>Photos</h3>
+              <div class="photos-grid" aria-hidden="false">
+                <!-- Replace these images -->
+                <img src="image/1.webp" alt="photo 1">
+                <img src="image/2.webp" alt="photo 2">
+                <img src="image/3.webp" alt="photo 3">
+                <img src="image/4.webp" alt="photo 4">
+                <img src="image/5.webp" alt="photo 5">
+                <img src="image/6.webp" alt="photo 6">
+              </div>
+
+                <h3>Posters</h3>
+              <div class="photos-grid" aria-hidden="false">
+                <!-- Replace these images -->
+                <img src="image\poster.jpeg" alt="photo 1">
+                <!--<img src="image/poster2.webp" alt="photo 2">
+                <img src="image/poster3.webp" alt="photo 3">
+                <img src="image/poster4.webp" alt="photo 4"> -->
+              </div>
+            </div>
+
+            <!-- Social -->
+            <div class="card tab-content" id="social" style="display:none; margin-top:16px;">
+              <h3>Social Media</h3>
+              <div class="social-icons" style="display:flex;align-items:center;">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a class="ig" href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a class="twitter" href="#" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a class="linkedin" href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a class="youtube" href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="card tab-content" id="reviews" style="display:none; margin-top:16px;">
+              <h3>Reviews</h3>
+              <div style="display:flex;gap:18px;align-items:center;">
+                <div>
+                  <div class="score-big">4.9</div>
+                  <div style="color:var(--muted);font-weight:600">37 Reviews</div>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Rating distribution</div>
+                  <div class="bar" aria-hidden="true"><i></i></div>
+                  <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:8px;"><span>1 Star</span><span>5 Stars</span></div>
+                </div>
+              </div>
+
+              <div style="margin-top:14px;">
+                <!-- Example review -->
+                <div style="border-top:1px dashed #eee;padding-top:12px;">
+                  <div style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="width:48px;height:48px;border-radius:8px;background:#eee;"></div>
+                    <div>
+                      <div style="font-weight:700">Anand Kumar <span style="color:var(--muted);font-weight:500"> — 5 stars</span></div>
+                      <div style="color:var(--muted);font-size:14px;margin-top:6px">Great coaching and helpful trainers. My spoken English improved a lot.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT column -->
+          <aside>
+            <div class="card">
+              <h3>Contact & Quick Info</h3>
+              <p class="score-meta"><i class="fa fa-phone"></i> +91 93443 92931</p>
+              <p class="score-meta"><i class="fa fa-phone"></i> +91 98841 45313</p>
+              <p class="score-meta" style="margin-top:6px;"><i class="fa fa-envelope"></i> twstinstitute@gmail.com</p>
+              <p style="margin-top:12px;color:var(--muted)">Open hours: Mon–Sat 9:00am — 8:00pm</p>
+              <p style="margin-top:12px;color:var(--muted)">Open hours: Sun 10:00am — 4:00pm</p>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-col">
+          <div class="footer-logo"><div>TWST INSTITUTE</div></div>
+          <div style="margin-top:8px;color:#bbb;font-size:13px"> Location: No:63 Coramental Apartment,</div>          
+          <div style="margin-top:8px;color:#bbb;font-size:13px"> Velachery Road,</div>
+          <div style="margin-top:8px;color:#bbb;font-size:13px"> East Tambaram,</div>
+          <div style="margin-top:8px;color:#bbb;font-size:13px"> Adhi Nagar Bus Stop,</div>
+          <div style="margin-top:8px;color:#bbb;font-size:13px"> Tamil Nadu - 600 059.</div>
+          
+
+        </div>
+
+        <!-- <div class="footer-col">
+          <div style="font-weight:700;margin-bottom:8px">Programs</div>
+          <div class="footer-links">
+            <a href="#">English</a>
+            <a href="#">IELTS</a>
+            <a href="#">Foreign Languages</a>
+            <a href="#">Kids Academy</a>
+          </div>
+        </div> 
+
+        <div class="footer-col">
+          <div style="font-weight:700;margin-bottom:8px">Connect</div>
+          <div class="footer-links">
+            <a href="#">Contact</a>
+            <a href="#">Careers</a>
+            <a href="#">Franchise</a>
+          </div>
+        </div> -->
+        
+        <br><br><br><br>
+
+<div class="footer-col" id="Contact">
+ <div class="footer-col location" id="Contact">
+      <h3>Location</h3>
+
+      <iframe
+        title="Institute Location"
+        src="https://www.google.com/maps?q=12.9229544,80.1330327&z=16&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+      <a href="https://www.google.com/maps/dir/?api=1&destination=12.9229544,80.1330327" target="_blank" class="map-btn"> 📍 Get Directions </a>
+    </div>
+
+  </div>
+</div>
+
+
+      <div class="footer-bottom">Copyright Twst Institute ©2025. All Rights Reserved.</div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Tab switching
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        tabButtons.forEach(b=> b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const tab = btn.getAttribute('data-tab');
+        tabContents.forEach(c=>{
+          if (c.id === tab) c.style.display = '';
+          else c.style.display = 'none';
+        });
+
+        // set ARIA
+        tabButtons.forEach(b=> b.setAttribute('aria-selected', b === btn ? 'true' : 'false'));
+      });
+    });
+
+    // Initialize: show about
+    document.querySelectorAll('.tab-content').forEach(c => {
+      if (c.id !== 'about') c.style.display = 'none';
+    });
+
+  </script>
+</body>
+</html>
